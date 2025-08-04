@@ -1,0 +1,12 @@
+.{
+    .name = .zopengl_glgen,
+    .version = "0.6.0-dev",
+    .fingerprint = 0x464eb047825cb370,
+    .minimum_zig_version = "0.14.1",
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+        "src",
+        "LICENSE",
+    },
+}
