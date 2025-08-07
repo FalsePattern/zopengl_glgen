@@ -5466,6 +5466,48 @@ pub fn Wrap(comptime bindings: anytype) type {
             return @enumFromInt(bindings.GetGraphicsResetStatus());
         }
 
+        pub fn createVertexArray(ptr: *VertexArrayObject) void {
+            bindings.CreateVertexArrays(1, @ptrCast(ptr));
+        }
+
+        pub fn createVertexArrays(arrays: []VertexArrayObject) void {
+            bindings.CreateVertexArrays(@intCast(arrays.len), @ptrCast(arrays.ptr));
+        }
+
+        pub fn vertexArrayVertexBuffer(array: VertexArrayObject, binding_index: u32, buffer: Buffer, offset: isize, stride: u32) void {
+            bindings.VertexArrayVertexBuffer(@intFromEnum(array), binding_index, @intFromEnum(buffer), offset, @intCast(stride));
+        }
+
+        pub fn vertexArrayElementBuffer(array: VertexArrayObject, buffer: Buffer) void {
+            bindings.VertexArrayElementBuffer(@intFromEnum(array), @intFromEnum(buffer));
+        }
+
+        pub fn enableVertexArrayAttrib(array: VertexArrayObject, location: VertexAttribLocation) void {
+            bindings.EnableVertexArrayAttrib(@intFromEnum(array), @intFromEnum(location));
+        }
+
+        pub fn vertexArrayAttribBinding(array: VertexArrayObject, location: VertexAttribLocation, binding_index: u32) void {
+            bindings.VertexArrayAttribBinding(@intFromEnum(array), @intFromEnum(location), binding_index);
+        }
+
+        pub fn vertexArrayAttribFormat(
+            array: VertexArrayObject,
+            location: VertexAttribLocation,
+            size: u32,
+            attrib_type: VertexAttribType,
+            normalised: Boolean,
+            relative_offset: u32,
+        ) void {
+            bindings.VertexArrayAttribFormat(
+                @intFromEnum(array),
+                @intFromEnum(location),
+                @intCast(size),
+                @intFromEnum(attrib_type),
+                normalised,
+                relative_offset,
+            );
+        }
+
         //--------------------------------------------------------------------------------------------------
         //
         // OpenGL 4.6 (Core Profile)
