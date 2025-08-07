@@ -5422,7 +5422,7 @@ pub fn Wrap(comptime bindings: anytype) type {
         }
 
         pub fn createBuffer(ptr: *Buffer) void {
-            bindings.CreateBuffers(1, @ptrCast(@constCast(&ptr)));
+            bindings.CreateBuffers(1, @ptrCast(ptr));
         }
 
         pub fn createBuffers(buffers: []Buffer) void {
