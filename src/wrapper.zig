@@ -5124,6 +5124,7 @@ pub fn Wrap(comptime bindings: anytype) type {
         pub const SHADER_STORAGE_BARRIER_BIT = bindings.SHADER_STORAGE_BARRIER_BIT;
         pub const MAX_COMBINED_SHADER_OUTPUT_RESOURCES = bindings.MAX_COMBINED_SHADER_OUTPUT_RESOURCES;
 
+        pub const APIENTRY = bindings.APIENTRY;
         pub const DEBUGPROC = *const fn (
             source: DebugSource,
             type: DebugType,
@@ -5132,7 +5133,7 @@ pub fn Wrap(comptime bindings: anytype) type {
             length: u32,
             message: [*]const u8,
             userParam: ?*const anyopaque,
-        ) void;
+        ) callconv(APIENTRY) void;
         pub const DEBUG_OUTPUT = bindings.DEBUG_OUTPUT;
         pub const DEBUG_SOURCE_API = bindings.DEBUG_SOURCE_API;
         pub const DEBUG_SOURCE_WINDOW_SYSTEM = bindings.DEBUG_SOURCE_WINDOW_SYSTEM;
